@@ -49,7 +49,7 @@ void Cell::aiMove()
         checkers[i]->setBlocked(true);
     }
     ai::makeSmartMove();
-    ai::makeRandomMove();
+    //ai::makeRandomMove();
 }
 
 Cell::Cell(QColor color, int iGrid, int jGrid, QWidget *)

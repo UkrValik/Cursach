@@ -18,20 +18,20 @@ GameBoard::GameBoard(QWidget *)
         cells[i].resize(8);
         for (int j = 0; j < 8; ++j) {
             if ((i + j) % 2) {
-                cells[i][j] = new Cell(Qt::white, i, j);
+                cells[i][j] = new Cell(Qt::black, i, j);
             }
             else {
-                cells[i][j] = new Cell(Qt::black, i, j);
+                cells[i][j] = new Cell(Qt::white, i, j);
             }
             QObject::connect(cells.at(i).at(j), SIGNAL(moveThisChecker(Checker*, int, int)), this, SLOT(moveChecker(Checker*, int, int)));
             myLayout->addWidget(cells[i][j], i, j);
-            if (cells[i][j]->getColor() == Qt::white && i < 3) {
+            if (cells[i][j]->getColor() == Qt::black && i < 3) {
                 redCheckers[redCheckersCounter] = new Checker(i, j, Qt::red);
                 myLayout->addWidget(redCheckers[redCheckersCounter], i, j);
                 myLayout->setAlignment(redCheckers[redCheckersCounter], Qt::AlignCenter);
                 redCheckersCounter++;
             }
-            if (cells[i][j]->getColor() == Qt::white && i > 4) {
+            if (cells[i][j]->getColor() == Qt::black && i > 4) {
                 blueCheckers[blueCheckersCounter] = new Checker(i, j, Qt::blue);
                 myLayout->addWidget(blueCheckers[blueCheckersCounter], i, j);
                 myLayout->setAlignment(blueCheckers[blueCheckersCounter], Qt::AlignCenter);
